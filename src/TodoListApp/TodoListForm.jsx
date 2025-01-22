@@ -6,10 +6,13 @@ function TodoListForm(props) {
   const addItem = (event) => {
     event.preventDefault()
     if (itemToAdd !== '' ) {
-      setTodos([...todos, itemToAdd])
+      setTodos([...todos, {text: itemToAdd}])
     }
   }
 
+  const clearItems = () => {
+    setTodos([])
+  }
 
   return (
     <div>
@@ -21,6 +24,7 @@ function TodoListForm(props) {
             onChange={(event) => setItemToAdd(event.target.value)}/>
         <button type="submit" >Add</button>
       </form>
+      <button onClick={() => clearItems()}>Clear</button>
     </div>
   )
 }
@@ -29,7 +33,10 @@ TodoListForm.propTypes = {
   itemToAdd: PropTypes.string,
   setItemToAdd: PropTypes.func,
   setTodos: PropTypes.func,
-  todos: PropTypes.arrayOf(PropTypes.string)
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string,
+    isCompleted: PropTypes.bool
+  }))
 
 }
 
