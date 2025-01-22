@@ -1,13 +1,13 @@
-import { useState } from "react"
+import PropTypes from "prop-types";
 
 function TodoListForm(props) {
   const {itemToAdd, setItemToAdd, setTodos, todos} = props;
-  // const [itemToAdd, setItemToAdd] = useState('')
-  // const [todos, setTodos] = useState([])
   
   const addItem = (event) => {
     event.preventDefault()
-    setTodos([...todos, itemToAdd])
+    if (itemToAdd !== '' ) {
+      setTodos([...todos, itemToAdd])
+    }
   }
 
 
@@ -23,6 +23,14 @@ function TodoListForm(props) {
       </form>
     </div>
   )
+}
+
+TodoListForm.propTypes = {
+  itemToAdd: PropTypes.string,
+  setItemToAdd: PropTypes.func,
+  setTodos: PropTypes.func,
+  todos: PropTypes.arrayOf(PropTypes.string)
+
 }
 
 export default TodoListForm

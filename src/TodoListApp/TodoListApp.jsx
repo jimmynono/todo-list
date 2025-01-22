@@ -5,7 +5,7 @@ import TodoListItems from "./TodoListItems"
 
 function TodoListApp() {
   // all state is kept track here
-  const [todos, setTodos] = useState([''])
+  const [todos, setTodos] = useState([])
   const [itemToAdd, setItemToAdd] = useState('')
 
   return (

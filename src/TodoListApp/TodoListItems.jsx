@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+
+
 function TodoListItems(props) {
   const {todos} = props;
   return (
@@ -11,6 +14,10 @@ function TodoListItems(props) {
     
     </>
   )
+}
+
+TodoListItems.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default TodoListItems
