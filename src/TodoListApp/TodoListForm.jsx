@@ -6,7 +6,7 @@ function TodoListForm(props) {
   const addItem = (event) => {
     event.preventDefault()
     if (itemToAdd !== '' ) {
-      setTodos([...todos, {text: itemToAdd}])
+      setTodos([...todos, {text: itemToAdd,}])
     }
   }
 
@@ -21,6 +21,7 @@ function TodoListForm(props) {
         <input 
             type="text" 
             id="todo-input" 
+            value={itemToAdd}
             onChange={(event) => setItemToAdd(event.target.value)}/>
         <button type="submit" >Add</button>
       </form>

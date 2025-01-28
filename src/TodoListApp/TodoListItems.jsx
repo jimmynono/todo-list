@@ -1,8 +1,13 @@
+import { useContext } from "react";
+import  {ThemeContext} from "../context/ThemeContext";
 import PropTypes from "prop-types";
 
 function TodoListItems(props) {
+  const {state, updateTheme} = useContext(ThemeContext)
   const {todos, setTodos, title} = props;
 
+
+  console.log(state)
   const handleClick = (idx) => {
     const arrOne = todos.slice(0, idx)
     const arrTwo = todos.slice(idx + 1)
@@ -13,9 +18,17 @@ function TodoListItems(props) {
     
     setTodos(newArr)  
   }
+  const lightTheme = {
+    'backgroundColor': 'white'
+  }
+
+  const darkTheme = {
+    'backgroundColor': 'black'
+  }
   return (
-    <>
+    <div style={state === 'light' ? lightTheme : darkTheme}>
       <h2>{title ? title : 'Peter'}</h2>
+      <button onClick={()=> updateTheme()}>theme</button>
         <ul>
           {todos.map((todo, index) => {
             if (todo.isCompleted === false) {
@@ -34,7 +47,7 @@ function TodoListItems(props) {
           })}
         </ul>
     
-    </>
+    </div>
   )
 }
 
