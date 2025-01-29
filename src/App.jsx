@@ -1,18 +1,27 @@
+import { ThemeContext } from './context/ThemeContext'
 import TodoListApp from './TodoListApp/TodoListApp'
 import './App.css'
-// import Picture from './Picture'
+import { useState } from 'react'
 
 function App() {
-  // const msg = "Ron Swanson"
-  // const imgSrc = 'https://miro.medium.com/v2/resize:fit:950/0*rS2RVUK6WBTkmaeO.jpg'
-  // const imgAlt = 'Ron at desk'
+  const [theme, setTheme] = useState('light')
+
+  const updateTheme = () => {
+    if (theme == 'light') {
+      setTheme('dark')
+    } else  {
+      setTheme('light')
+    }
+  }
   
   return (
-    <>
-      {/* <h1>{msg}</h1>
-      <Picture imgSrc={imgSrc} imgAlt={imgAlt} /> */}
+    <ThemeContext.Provider value={{theme, updateTheme}}>
+
+
       <TodoListApp />
-    </>
+      {/* <h1 className="headline" itemID="thisthing">HELLOW</h1> */}
+      
+    </ThemeContext.Provider>
   )
 }
 
