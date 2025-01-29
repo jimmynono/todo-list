@@ -6,7 +6,7 @@ function TodoListForm(props) {
   const addItem = (event) => {
     event.preventDefault()
     if (itemToAdd !== '' ) {
-      setTodos([...todos, {text: itemToAdd}])
+      setTodos([...todos, {text: itemToAdd, isCompleted: false}])
     }
   }
 
